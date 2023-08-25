@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Creating text nodes</title>
+  </head>
+
+  <body>
+
+    <p>Create your own buttons to insert some new text nodes into the DOM.</p>
+
+    <p>
+      Example buttons:
+      <button onclick="addTextNode('Why? ', 'examples');">Why?</button>
+      <button onclick="addTextNode('No. ', 'examples');">No</button>
+      <button onclick="addTextNode('Maybe later. ', 'examples');">Maybe later</button>
+      <button onclick="removeTextNode('examples');">Remove text</button>
+      <span id="examples"></span>
+    </p>
+
+    <br>
+    <label for="newButtonText">Input text for a new button:</label>
+    <input type="text" id="newButtonText" name="name" required/>
+    <button onclick="addButton('newButtonText');">Create button</button>
+    <button onclick="removeChildren('userButtons');">Remove all buttons</button>
+    <button onclick="removeChildren('userButtonText');">Remove all text</button>
+
+    <p>
+      Your buttons:
+      <span id="userButtons"></span>
+    </p>
+    <p>
+      Your button text:
+      <span id="userButtonText"></span>
+    </p>
+    
+    <script>
+      function addTextNode(text, id) {
+        let newText = document.createTextNode(text);
+        let para = document.getElementById(id);
+        para.appendChild(newText);
+      }
+
+      function removeTextNode(id) {
+        let elem = document.getElementById(id);
+        elem.replaceChildren();
+      }
+
+      function addButton(id) {
+        // Create button.
+        let text = document.getElementById(id).value
+        if (text != "") {
+          let buttonText = text + " ";
+          let btn = document.createElement("button");
+          btn.innerHTML = text;
+          btn.onclick = function () {
+            addTextNode(buttonText, 'userButtonText');
+          };
+          // Add button to element.
+          let para = document.getElementById("userButtons");
+          para.appendChild(btn);
+          // Add space after button for display purposes.
+          let space = document.createTextNode(" ");
+          para.appendChild(space);
+          // Remove text in input field.
+          document.getElementById("newButtonText").value = "";
+        } else {
+          alert("Enter some text before trying to create a button.");
+        }
+
+      }
+
+      function removeChildren(id) {
+        let elem = document.getElementById(id);
+        elem.replaceChildren(); 
+      }
+    </script>
+
+  </body>
+</html>

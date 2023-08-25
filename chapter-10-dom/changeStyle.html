@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Changing styles</title>
+  </head>
+
+  <body>
+
+    <h1 id="targetText" style="color: black">
+      Press the button to change my color.
+    </h1>
+
+    <button onclick="changeColor();">Change color</button>
+
+    <script>
+      function changeColor() {
+        let text = document.getElementById("targetText");
+        let currentColor = text.style.color;
+        let colors = ["black", "magenta", "tomato", "slateblue", "mediumseagreen", "orange", "dodgerblue"];
+        let currentColorIndex = colors.indexOf(currentColor);
+        let newColorIndex = 0;
+        if (currentColorIndex !== colors.length - 1) {
+          newColorIndex = currentColorIndex + 1;  
+        }
+        text.style.color = colors[newColorIndex];
+      }
+    </script>
+
+  </body>
+</html>
