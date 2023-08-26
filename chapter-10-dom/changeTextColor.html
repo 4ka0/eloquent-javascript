@@ -19,9 +19,9 @@
         let currentColor = text.style.color;
         let colors = ["black", "magenta", "tomato", "slateblue", "mediumseagreen", "orange", "dodgerblue"];
         let currentColorIndex = colors.indexOf(currentColor);
-        let newColorIndex = 0;
-        if (currentColorIndex !== colors.length - 1) {
-          newColorIndex = currentColorIndex + 1;  
+        let newColorIndex = currentColorIndex + 1;
+        if (currentColorIndex == colors.length - 1) {
+          newColorIndex = 0;
         }
         text.style.color = colors[newColorIndex];
       }
