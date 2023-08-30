@@ -1,0 +1,56 @@
+<p>Press the alphabet keys to change the color of the screen.</p>
+<p id="color-name"></p>
+
+<script>
+
+  let colors = {
+    a: "violet",
+    b: "mediumseagreen",
+    c: "slateblue",
+    d: "orange",
+    e: "tomato",
+    f: "dodgerblue",
+    g: "firebrick",
+    h: "gold",
+    i: "fuchsia",
+    j: "darkorange",
+    k: "darkseagreen",
+    l: "indigo",
+    m: "chartreuse",
+    n: "lightgreen",
+    o: "mediumslateblue",
+    p: "mistyrose",
+    q: "mintcream",
+    r: "papayawhip",
+    s: "sandybrown",
+    t: "yellow",
+    u: "thistle",
+    v: "teal",
+    w: "yellowgreen",
+    x: "wheat",
+    y: "navy",
+    z: "aquamarine",
+  };
+
+  window.addEventListener("keydown", event => {
+    // Get the key that has been pressed and the corresponding color.
+    let key = event.key;
+    let color = colors[key];
+    // Set the background color.
+    document.body.style.background = color;
+    // Add the current color to the color display paragraph.
+    // Only change the displayed text if an alphabet key has been pressed.
+    if (color !== undefined) {
+      // Remove the previous color from the color display paragraph.
+      let para = document.getElementById("color-name");
+      para.replaceChildren();
+      let colorText = document.createTextNode("The current color is \"" + color + "\".");
+      para.appendChild(colorText);
+    }
+  })
+
+  /* window.addEventListener("keyup", event => {
+    document.body.style.background = "";
+  }) */
+
+</script>

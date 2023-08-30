@@ -1,0 +1,14 @@
+<button>Alpha</button>
+<button>Beta</button>
+<button>Crunchy</button>
+<script>
+  // An event listener is added to the entire body, and the "target" property
+  // is used to cause an action only when a button is clicked.
+  // This is better than registering a listener on each button.
+  document.body.addEventListener("click", event => {
+    if (event.target.nodeName == "BUTTON") {
+      // This outputs "Clicked" plus the text content of the button in question.
+      console.log("Clicked", event.target.textContent);
+    }
+  });
+</script>
