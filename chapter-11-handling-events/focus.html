@@ -1,0 +1,22 @@
+<p>Name: <input type="text" data-help="Please enter your full name."></p>
+<p>Age: <input type="text" data-help="Please enter your age in years."></p>
+<p>Address: <input type="text" data-help="Please enter your current address."></p>
+<p>Help text: <span id="help"></span></p>
+
+<script>
+  let helpField = document.querySelector("#help");
+  let fields = document.querySelectorAll("input");
+  for (let field of Array.from(fields)) {
+    // When the field in question is in focus, show the help text.
+    field.addEventListener("focus", event => {
+      // Get the help text from the data-help attribute.
+      let text = event.target.getAttribute("data-help");
+      // Set the help text to the help paragraph.
+      helpField.textContent = text;
+    });
+    // When the field in question is not in focus, clear the text.
+    field.addEventListener("blur", event => {
+      helpField.textContent = "";
+    });
+  }
+</script>
